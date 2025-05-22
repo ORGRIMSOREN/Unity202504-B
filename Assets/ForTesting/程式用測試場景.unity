@@ -132,7 +132,6 @@ GameObject:
   - component: {fileID: 296143810}
   - component: {fileID: 296143812}
   - component: {fileID: 296143813}
-  - component: {fileID: 296143814}
   m_Layer: 5
   m_Name: "Text (TMP) - \u5C0D\u8A71\u6587\u5B57"
   m_TagString: Untagged
@@ -365,19 +364,6 @@ MonoBehaviour:
   initDatabase: 1
   previewUpdatesPerSecond: 60
   previewTimeScale: 1
---- !u!114 &296143814
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 296143808}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ab1cb2d149cd24459e19574d6209999, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tmpWriter: {fileID: 296143812}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -766,6 +752,8 @@ GameObject:
   - component: {fileID: 1429583041}
   - component: {fileID: 1429583040}
   - component: {fileID: 1429583039}
+  - component: {fileID: 1429583043}
+  - component: {fileID: 1429583044}
   m_Layer: 5
   m_Name: "Canvas - \u5C0D\u8A71UI"
   m_TagString: Untagged
@@ -856,6 +844,51 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1429583043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1429583038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ab1cb2d149cd24459e19574d6209999, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tmpWriter: {fileID: 296143812}
+  playerInput: {fileID: 1429583044}
+  dialogTexts: []
+--- !u!114 &1429583044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1429583038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Player
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1 &1483507434
 GameObject:
   m_ObjectHideFlags: 0
@@ -958,7 +991,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogData: {fileID: 11400000, guid: e39f588cc6425af46b99cb753e09ef01, type: 2}
-  dialog: {fileID: 296143814}
+  dialog: {fileID: 1429583043}
 --- !u!1001 &1726426156
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: "NPC_DialogData_\u6E2C\u8A66\u7528"
   m_EditorClassIdentifier: 
   dialogTexts:
-  - "<wave>\u6211\u662F</>. <palette><shake>\u963F\u661F</></>."
-  - <wave>TMPEffects</>. <palette><shake>TMPEffects</></>.
+  - "<wave>\u9732\u6BD4\u91AC~\u55E8!</>. <palette><shake>\u54EA\u5C3C\u560E\u65AF\u5B63</></>."
+  - "<wave>\u6BD4\u8D77\u8584\u8377\u5DE7\u514B\u529B~</>. <palette><shake>\u9084\u662F\u4F60<3</></>."

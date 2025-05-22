@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using NaughtyAttributes;
 using UnityEngine;
 
@@ -9,13 +10,23 @@ public class NPC : MonoBehaviour
     [SerializeField]
     private Dialog dialog;
 
-    [Button("顯示對話")]
+    
+    
+    
+    [Button("顯示第一段對話")]
     public void PlayDialog()
     {
-        var dialogText = dialogData.dialogTexts[0];
-        dialog.SetText(dialogText);
-        dialog.PlayWriter();
+        dialog.setTexts(dialogData.dialogTexts);
+        dialog.PlayDialog();
     }
+
+    [Button("顯示第二段對話")]
+    public void PlayNextDialog()
+    {
+        dialog.setTexts(dialogData.dialogTexts);
+        dialog.PlayNextDialog();
+    }
+    
 
     [Button("Skip對話")]
     public void SkipDialog()

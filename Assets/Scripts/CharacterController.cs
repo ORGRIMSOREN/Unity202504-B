@@ -24,8 +24,8 @@ public class CharacterController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (interactAction.WasPressedThisFrame()) Debug.Log($"interact");
-        if (jumpAction.WasPressedThisFrame()) Debug.Log($"Jump");
+        // if (interactAction.WasPressedThisFrame()) Debug.Log($"interact");
+        // if (jumpAction.WasPressedThisFrame()) Debug.Log($"Jump");
 
         var moveVector2 = moveAction.ReadValue<Vector2>();
         var direction   = new Vector3(moveVector2.x , moveVector2.y , 0); // 移動方向
