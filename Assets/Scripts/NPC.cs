@@ -1,6 +1,9 @@
+using System;
 using System.Runtime.CompilerServices;
+using DG.Tweening;
 using NaughtyAttributes;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class NPC : MonoBehaviour
 {
@@ -10,9 +13,41 @@ public class NPC : MonoBehaviour
     [SerializeField]
     private Dialog dialog;
 
+    [SerializeField]
+    private CanvasGroup NpcDialogPannelCanvasGroup;
+
+    private void Start()
+    {
+        dialog.gameObject.SetActive(false);
+        NpcDialogPannelCanvasGroup.alpha = 0;
+    }
+    
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        throw new NotImplementedException();
+    }
+
+    [Button("顯示對話提示")]
+    private void ShowDialog()
+    {
+        
+        NpcDialogPannelCanvasGroup.DOFade(1, 0.5f);
+        
+    }
+    [Button("隱藏對話提示")]
+    private void HideDialog()
+    {
+        NpcDialogPannelCanvasGroup.DOFade(0, 0.5f);
+        
+    }
     
     
-    
+
     [Button("顯示第一段對話")]
     public void PlayDialog()
     {

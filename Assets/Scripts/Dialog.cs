@@ -14,10 +14,26 @@ public class Dialog : MonoBehaviour
     [SerializeField]
     private PlayerInput playerInput;
 
+    [SerializeField]
+    private GameObject nextDialogHintImage;
+    
+    
     private void Start()
     {
+        tmpWriter.OnFinishWriter.AddListener(OnFinishWriter);
+        tmpWriter.OnStartWriter.AddListener(OnStartWriter);
         var interactAction = playerInput.actions.FindAction("Interact");
         interactAction.performed+= InteractActionOnperformed;
+    }
+
+    private void OnStartWriter(TMPWriter arg0)
+    {
+        nextDialogHintImage.SetActive(false);
+    }
+
+    private void OnFinishWriter(TMPWriter arg0)
+    {
+        nextDialogHintImage.SetActive(true);
     }
 
     private void OnDisable()
@@ -106,8 +122,14 @@ public class Dialog : MonoBehaviour
     }
 
     [Button("關閉對話框")]
+    public void OpenDialog()
+    {
+        gameObject.SetActive(true);
+    }
+    [Button("關閉對話框")]
     public void CloseDialog()
     {
         gameObject.SetActive(false);
     }
+    
 }
