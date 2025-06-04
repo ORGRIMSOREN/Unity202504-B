@@ -15,25 +15,28 @@ public class Dialog : MonoBehaviour
     private PlayerInput playerInput;
 
     [SerializeField]
-    private GameObject nextDialogHintImage;
+    private CanvasGroup nextDialoghintCanvasGroup;
     
     
     private void Start()
     {
         tmpWriter.OnFinishWriter.AddListener(OnFinishWriter);
         tmpWriter.OnStartWriter.AddListener(OnStartWriter);
+        
         var interactAction = playerInput.actions.FindAction("Interact");
         interactAction.performed+= InteractActionOnperformed;
+
+        
     }
 
     private void OnStartWriter(TMPWriter arg0)
     {
-        nextDialogHintImage.SetActive(false);
+        nextDialoghintCanvasGroup.alpha = 0f;
     }
 
     private void OnFinishWriter(TMPWriter arg0)
     {
-        nextDialogHintImage.SetActive(true);
+        nextDialoghintCanvasGroup.alpha = 1;
     }
 
     private void OnDisable()
@@ -44,11 +47,12 @@ public class Dialog : MonoBehaviour
 
     private void InteractActionOnperformed(InputAction.CallbackContext obj)
     {
+        
         //如果對話完畢(最後一段話)，則關閉對話框
         if (tmpWriter.IsWriting == false && dialogIndex + 1 == dialogTexts.Count)
         {
             CloseDialog();
-            return;
+            
         }
         //如果還在播放打字機效果，則Skip打字機效果
         if (tmpWriter.IsWriting)
@@ -121,7 +125,7 @@ public class Dialog : MonoBehaviour
         dialogTexts = Texts;
     }
 
-    [Button("關閉對話框")]
+    [Button("開啟對話框")]
     public void OpenDialog()
     {
         gameObject.SetActive(true);

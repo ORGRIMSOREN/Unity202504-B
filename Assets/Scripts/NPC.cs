@@ -15,21 +15,52 @@ public class NPC : MonoBehaviour
 
     [SerializeField]
     private CanvasGroup NpcDialogPannelCanvasGroup;
-
+    
+    [SerializeField]
+    private PlayerInput playerInput;
     private void Start()
     {
         dialog.gameObject.SetActive(false);
-        NpcDialogPannelCanvasGroup.alpha = 0;
+        NpcDialogPannelCanvasGroup.alpha                     =  0;
+        playerInput.actions.FindAction("Interact").performed += OnInterActionPerformed;
     }
-    
+
+    private void OnDisable()
+    {
+        var interact  = playerInput.actions.FindAction("Interact");
+        playerInput.actions.FindAction("Interact").performed -= OnInterActionPerformed;
+    }
+
+    private void OnInterActionPerformed(InputAction.CallbackContext obj)
+    {
+        if (dialogHintOpen)
+        {
+            dialog.OpenDialog();
+            PlayDialog();
+            
+            
+        }
+    }
+
+    private bool dialogHintOpen ;
     private void OnTriggerEnter2D(Collider2D other)
     {
-        
+       //判斷進入的物件是否有characterController
+        if (other.gameObject.TryGetComponent(out CharacterController character))
+        {
+            dialogHintOpen = true;
+            ShowDialog();
+            
+        }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        throw new NotImplementedException();
+        if (other.gameObject.TryGetComponent(out CharacterController character))
+        {
+            dialogHintOpen = false;
+            HideDialog();
+        }
     }
 
     [Button("顯示對話提示")]
@@ -51,6 +82,7 @@ public class NPC : MonoBehaviour
     [Button("顯示第一段對話")]
     public void PlayDialog()
     {
+        dialog.gameObject.SetActive(true);
         dialog.setTexts(dialogData.dialogTexts);
         dialog.PlayDialog();
     }
