@@ -35,7 +35,8 @@ public class NPC : MonoBehaviour
     {
         if (dialogHintOpen)
         {
-            dialog.OpenDialog();
+            Debug.Log("NPC open");
+            //dialog.OpenDialog();
             PlayDialog();
             
             

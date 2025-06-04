@@ -860,6 +860,7 @@ GameObject:
   - component: {fileID: 1429583040}
   - component: {fileID: 1429583039}
   - component: {fileID: 1429583043}
+  - component: {fileID: 1429583044}
   m_Layer: 5
   m_Name: "Canvas - \u5C0D\u8A71UI"
   m_TagString: Untagged
@@ -963,11 +964,41 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tmpWriter: {fileID: 296143812}
-  playerInput: {fileID: 1483507439}
+  playerInput: {fileID: 1429583044}
   nextDialoghintCanvasGroup: {fileID: 1685269517}
   dialogTexts:
   - "<wave>\u9732\u6BD4\u91AC~\u55E8!</>. <palette><shake>\u54EA\u5C3C\u560E\u65AF\u5B63</></>."
   - "<wave>\u6BD4\u8D77\u8584\u8377\u5DE7\u514B\u529B~</>. <palette><shake>\u9084\u662F\u4F60<3</></>."
+--- !u!114 &1429583044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1429583038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Player
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1 &1483507434
 GameObject:
   m_ObjectHideFlags: 0
