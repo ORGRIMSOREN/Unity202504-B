@@ -966,6 +966,7 @@ MonoBehaviour:
   tmpWriter: {fileID: 296143812}
   playerInput: {fileID: 1429583044}
   nextDialoghintCanvasGroup: {fileID: 1685269517}
+  characterController: {fileID: 1905143583}
   dialogTexts:
   - "<wave>\u9732\u6BD4\u91AC~\u55E8!</>. <palette><shake>\u54EA\u5C3C\u560E\u65AF\u5B63</></>."
   - "<wave>\u6BD4\u8D77\u8584\u8377\u5DE7\u514B\u529B~</>. <palette><shake>\u9084\u662F\u4F60<3</></>."
@@ -1409,6 +1410,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ac277e082cb6934095cc91365b26df4, type: 3}
+--- !u!114 &1905143583 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8523225326308961291, guid: 7ac277e082cb6934095cc91365b26df4, type: 3}
+  m_PrefabInstance: {fileID: 1726426156}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4ae93df98d5e644aa857339f165e952, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

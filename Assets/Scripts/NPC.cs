@@ -22,17 +22,23 @@ public class NPC : MonoBehaviour
     {
         dialog.gameObject.SetActive(false);
         NpcDialogPannelCanvasGroup.alpha                     =  0;
+    }
+
+    private void OnEnable()
+    {
+        var interact  = playerInput.actions.FindAction("Interact");
         playerInput.actions.FindAction("Interact").performed += OnInterActionPerformed;
     }
 
     private void OnDisable()
     {
-        var interact  = playerInput.actions.FindAction("Interact");
         playerInput.actions.FindAction("Interact").performed -= OnInterActionPerformed;
     }
 
     private void OnInterActionPerformed(InputAction.CallbackContext obj)
     {
+        if (dialog.IsInDialog())return;
+        
         if (dialogHintOpen)
         {
             Debug.Log("NPC open");
@@ -101,4 +107,7 @@ public class NPC : MonoBehaviour
     {
         dialog.SkipWriter();
     }
+
+    
+    
 }

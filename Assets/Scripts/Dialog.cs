@@ -17,17 +17,15 @@ public class Dialog : MonoBehaviour
     [SerializeField]
     private CanvasGroup nextDialoghintCanvasGroup;
     
+    [SerializeField]
+    CharacterController characterController;
     
     private void Start()
     {
         tmpWriter.OnFinishWriter.AddListener(OnFinishWriter);
         tmpWriter.OnStartWriter.AddListener(OnStartWriter);
-        
-        var interactAction = playerInput.actions.FindAction("Interact");
-        interactAction.performed+= InteractActionOnperformed;
-
-        
     }
+    
 
     private void OnStartWriter(TMPWriter arg0)
     {
@@ -37,6 +35,13 @@ public class Dialog : MonoBehaviour
     private void OnFinishWriter(TMPWriter arg0)
     {
         nextDialoghintCanvasGroup.alpha = 1;
+    }
+
+    private void OnEnable()
+    {
+        var interactAction = playerInput.actions.FindAction("Interact");
+        interactAction.performed+= InteractActionOnperformed;
+        
     }
 
     private void OnDisable()
@@ -51,6 +56,8 @@ public class Dialog : MonoBehaviour
         //如果對話完畢(最後一段話)，則關閉對話框
         if (tmpWriter.IsWriting == false && dialogIndex + 1 == dialogTexts.Count)
         {
+           //對話結束回復角色的行動狀態
+            characterController.SetCanMove(true); 
             CloseDialog();
             
         }
@@ -66,7 +73,7 @@ public class Dialog : MonoBehaviour
     }
 
     /// <summary>
-    /// 設置索引
+    /// 紀錄對話索引
     /// </summary>
     private int dialogIndex = 0;
     
@@ -91,17 +98,17 @@ public class Dialog : MonoBehaviour
 
     public void PlayDialog()
     {
+        
         //檢查資料陣列是否有異常
-        if (dialogTexts.Count == 0)
-        {
-            Debug.LogError("錯誤,dialog的陣列資料為空");
-            return;
-        }
-
+        if (dialogTexts.Count == 0)return;
         dialogIndex = 0; //重置索引
+        isInDialog = true;
+        
         var dialogText = dialogTexts[dialogIndex];
         SetText(dialogText);
         PlayWriter();
+        
+        characterController.SetCanMove(false);
     }
 
     public void PlayNextDialog()
@@ -134,6 +141,13 @@ public class Dialog : MonoBehaviour
     public void CloseDialog()
     {
         gameObject.SetActive(false);
+        isInDialog = false;
     }
     
+    private bool isInDialog ;
+
+    public bool IsInDialog()
+    {
+        return isInDialog;
+    }
 }
