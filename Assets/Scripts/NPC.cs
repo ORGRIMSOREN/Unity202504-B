@@ -10,8 +10,7 @@ public class NPC : MonoBehaviour
     [SerializeField]
     private NPC_DialogData dialogData;
 
-    [SerializeField]
-    private Dialog dialog;
+    
 
     [SerializeField]
     private CanvasGroup NpcDialogPannelCanvasGroup;
@@ -20,7 +19,7 @@ public class NPC : MonoBehaviour
     private PlayerInput playerInput;
     private void Start()
     {
-        dialog.gameObject.SetActive(false);
+        Dialog.instance.gameObject.SetActive(false);
         NpcDialogPannelCanvasGroup.alpha                     =  0;
     }
 
@@ -37,7 +36,7 @@ public class NPC : MonoBehaviour
 
     private void OnInterActionPerformed(InputAction.CallbackContext obj)
     {
-        if (dialog.IsInDialog())return;
+        if (Dialog.instance.IsInDialog())return;
         
         if (dialogHintOpen)
         {
@@ -89,23 +88,24 @@ public class NPC : MonoBehaviour
     [Button("顯示第一段對話")]
     public void PlayDialog()
     {
-        dialog.gameObject.SetActive(true);
-        dialog.setTexts(dialogData.dialogTexts);
-        dialog.PlayDialog();
+        Dialog.instance.setDialogPos(transform.position);
+        Dialog.instance.gameObject.SetActive(true);
+        Dialog.instance.setTexts(dialogData.dialogTexts);
+        Dialog.instance.PlayDialog();
     }
 
     [Button("顯示第二段對話")]
     public void PlayNextDialog()
     {
-        dialog.setTexts(dialogData.dialogTexts);
-        dialog.PlayNextDialog();
+        Dialog.instance.setTexts(dialogData.dialogTexts);
+        Dialog.instance.PlayNextDialog();
     }
     
 
     [Button("Skip對話")]
     public void SkipDialog()
     {
-        dialog.SkipWriter();
+        Dialog.instance.SkipWriter();
     }
 
     

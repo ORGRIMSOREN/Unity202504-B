@@ -20,6 +20,13 @@ public class Dialog : MonoBehaviour
     [SerializeField]
     CharacterController characterController;
     
+    public static Dialog instance;
+
+    private void Awake()
+    {
+        instance = this;
+    }
+
     private void Start()
     {
         tmpWriter.OnFinishWriter.AddListener(OnFinishWriter);
@@ -149,5 +156,10 @@ public class Dialog : MonoBehaviour
     public bool IsInDialog()
     {
         return isInDialog;
+    }
+
+    public void setDialogPos(Vector3 position)
+    {
+        transform.position = position + new Vector3(0f, 0f, 0f);
     }
 }
